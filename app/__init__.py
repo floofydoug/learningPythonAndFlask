@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
+    g, request, jsonify
 )
 from db import get_db
 from datetime import datetime, timedelta
@@ -12,15 +12,6 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'homework.sqlite'),
     )
-    if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        app.config.from_mapping(test_config)
-
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
     
     # endpoint expects data object to contain
     # amount, invoice_id, 
@@ -55,10 +46,8 @@ def create_app(test_config=None):
 
         def calculateDaysPastDue(date):
             if date > datetime.now(): 
-                print(date, date.now())
                 return "current"
             else:
-                print(date, date.now())
                 delta = datetime.now() - date
                 return delta.days + " days overdue" 
 
