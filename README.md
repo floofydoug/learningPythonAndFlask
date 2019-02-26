@@ -11,8 +11,6 @@ psql;
 
 ### notes
 
-Just wanted to give you a quick update. I flew back a couple hours ago from Seattle. I was a lot more involved in the family processions than I thought and I haven't gotten to spend as much time on this task as I would've liked. I"ll keep my word and still submit what I have by the end of day tomorrow, using whatever time I have left after my day job. However, it may not be complete. 
-
 After 2 hours, I do have some takeaways, though. 
 
 -I should use the built in sqlite3 for efficiency. Don't bother with PSQL. 
