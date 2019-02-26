@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS invoices;
+
+CREATE TABLE invoices (
+    invoice_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    amount INTEGER NOT NULL, 
+    description TEXT NOT NULL,
+    due_date TIMESTAMP NOT NULL,
+    is_paid_off BOOLEAN NOT NULL DEFAULT "FALSE"
+);
+
+CREATE TABLE transactions (
+  transcations_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  invoice_id INTEGER NOT NULL, 
+  amount INTEGER NOT NULL, 
+  FOREIGN KEY (invoice_id) REFERENCES invoices (invoice_id)
+);
